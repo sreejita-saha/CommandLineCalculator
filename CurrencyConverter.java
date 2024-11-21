@@ -22,39 +22,41 @@ public class CurrencyConverter {
         double conAmount = 0;
 
         //switch statement
-        private static void switchStatement; {
-        switch (currency) {
-            case 1:
-                conAmount = inAmount * 0.83;
-                System.out.println("Your amount is: £" + conAmount);
-                break;
-            case 2:
-                conAmount = inAmount * 1.05;
-                System.out.println("Your amount is: $" + conAmount);
-                break;
-            case 3:
-                conAmount = inAmount * 1.2;
-                System.out.println("Your amount is: €" + conAmount);
-                break;
-            case 4:
-                conAmount = inAmount * 1.26;
-                System.out.println("Your amount is: $" + conAmount);
-                break;
-            case 5:
-                conAmount = inAmount * 0.95;
-                System.out.println("Your amount is: €" + conAmount);
-                break;
-            case 6:
-                conAmount = inAmount * 0.79;
-                System.out.println("Your amount is: £" + conAmount);
-                break;
-        }
-        System.out.println("Would you like to continue? Press Y for yes and N for no");
-        String ans = input.next();
+        //private static void switchStatement;
+        {
+            switch (currency) {
+                case 1:
+                    conAmount = inAmount * 0.83;
+                    System.out.println("Your amount is: £" + conAmount);
+                    break;
+                case 2:
+                    conAmount = inAmount * 1.05;
+                    System.out.println("Your amount is: $" + conAmount);
+                    break;
+                case 3:
+                    conAmount = inAmount * 1.2;
+                    System.out.println("Your amount is: €" + conAmount);
+                    break;
+                case 4:
+                    conAmount = inAmount * 1.26;
+                    System.out.println("Your amount is: $" + conAmount);
+                    break;
+                case 5:
+                    conAmount = inAmount * 0.95;
+                    System.out.println("Your amount is: €" + conAmount);
+                    break;
+                case 6:
+                    conAmount = inAmount * 0.79;
+                    System.out.println("Your amount is: £" + conAmount);
+                    break;
+            }
+            System.out.println("Would you like to continue? Press Y for yes and N for no");
+            String ans = input.next();
 
-        if (ans == "Y" ) {
+            //if (ans == "Y") {
 
 
+            }
         }
     }
-}
+
