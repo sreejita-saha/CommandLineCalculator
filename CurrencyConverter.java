@@ -49,12 +49,19 @@ public class CurrencyConverter {
                     conAmount = inAmount * 0.79;
                     System.out.println("Your amount is: £" + conAmount);
                     break;
+                default:
+                    System.out.println("Please enter a valid option.");
             }
+
             System.out.println("Would you like to continue? Press Y for yes and N for no");
             String ans = input.next();
 
-            //if (ans == "Y") {
-
+            if (ans == "Y") {
+                main(null);
+            } else {
+                System.out.println("Thank you. Exiting Currency Calculator...");
+                input.close();
+            }
 
             }
         }
