@@ -14,6 +14,10 @@ public class CurrencyConverter {
         //taking and storing the users input
         int currency = input.nextInt();
 
+        if(currency < 1 && currency > 6) {
+            System.out.println("Please enter a valid option.");
+            System.exit(0); }
+
         //asking user for the amount they want to convert
         System.out.print("Enter your amount: ");
         //taking and storing the amount
@@ -49,14 +53,12 @@ public class CurrencyConverter {
                     conAmount = inAmount * 0.79;
                     System.out.println("Your amount is: £" + conAmount);
                     break;
-                default:
-                    System.out.println("Please enter a valid option.");
             }
 
             System.out.println("Would you like to continue? Press Y for yes and N for no");
             String ans = input.next();
 
-            if (ans == "Y") {
+            if (ans == "Y" && ans == "y"){
                 main(null);
             } else {
                 System.out.println("Thank you. Exiting Currency Calculator...");
@@ -66,4 +68,3 @@ public class CurrencyConverter {
             }
         }
     }
-
