@@ -12,59 +12,50 @@ public class CurrencyConverter {
                 "3. Pound £ to Euro €   4. Pound £ to Dollar $\n" +
                 "5. Dollar $ to Euro €  6. Dollar $ to Pound £");
         //taking and storing the users input
-        int currency = input.nextInt();
+        int currencyChoice = input.nextInt();
 
-        if(currency < 1 && currency > 6) {
+        //to check if the choice is correct
+        if (currencyChoice < 1 && currencyChoice > 6) {
             System.out.println("Please enter a valid option.");
-            System.exit(0); }
+            System.exit(0);
+        }
 
         //asking user for the amount they want to convert
         System.out.print("Enter your amount: ");
         //taking and storing the amount
-        double inAmount = input.nextDouble();
+        double initialAmount = input.nextDouble();
         //initialise the converted amounnt
-        double conAmount = 0;
+        double convertedAmount = 0;
 
         //switch statement
         //private static void switchStatement;
         {
-            switch (currency) {
+            switch (currencyChoice) {
                 case 1:
-                    conAmount = inAmount * 0.83;
-                    System.out.println("Your amount is: £" + conAmount);
+                    convertedAmount = initialAmount * 0.83;
+                    System.out.println("Your amount is: £" + convertedAmount);
                     break;
                 case 2:
-                    conAmount = inAmount * 1.05;
-                    System.out.println("Your amount is: $" + conAmount);
+                    convertedAmount = initialAmount * 1.05;
+                    System.out.println("Your amount is: $" + convertedAmount);
                     break;
                 case 3:
-                    conAmount = inAmount * 1.2;
-                    System.out.println("Your amount is: €" + conAmount);
+                    convertedAmount = initialAmount * 1.2;
+                    System.out.println("Your amount is: €" + convertedAmount);
                     break;
                 case 4:
-                    conAmount = inAmount * 1.26;
-                    System.out.println("Your amount is: $" + conAmount);
+                    convertedAmount = initialAmount * 1.26;
+                    System.out.println("Your amount is: $" + convertedAmount);
                     break;
                 case 5:
-                    conAmount = inAmount * 0.95;
-                    System.out.println("Your amount is: €" + conAmount);
+                    convertedAmount = initialAmount * 0.95;
+                    System.out.println("Your amount is: €" + convertedAmount);
                     break;
                 case 6:
-                    conAmount = inAmount * 0.79;
-                    System.out.println("Your amount is: £" + conAmount);
+                    convertedAmount = initialAmount * 0.79;
+                    System.out.println("Your amount is: £" + convertedAmount);
                     break;
-            }
-
-            System.out.println("Would you like to continue? Press Y for yes and N for no");
-            String ans = input.next();
-
-            if (ans == "Y" && ans == "y"){
-                main(null);
-            } else {
-                System.out.println("Thank you. Exiting Currency Calculator...");
-                input.close();
-            }
-
             }
         }
     }
+}
