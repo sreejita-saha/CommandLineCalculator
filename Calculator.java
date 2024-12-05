@@ -1,100 +1,119 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
-
 public class Calculator {
-
-    private String expression;
-    private int position;
+        private String expression;
+        private int position;
 
     public Calculator(String expression) {
-        this.expression = expression;
-        this.position = 0;
-    }
+            this.expression = expression.replaceAll("\\s+", "");
+            this.position = 0;
+        }
 
-    // This method will start evaluating the expression
-    public double evaluate() {
-        return parseExpression();
-    }
+        // Static method for direct evaluation
+        public static double evaluateExpression (String expression){
+            Calculator calculator = new Calculator(expression);
+            return calculator.evaluate();
+        }
 
-    // Parse the main expression (handles + and -)
-    private double parseExpression() {
-        double result = parseTerm();
+        // This method will start evaluating the expression
+        public double evaluate () {
+            return parseExpression();
+        }
 
-        while (position < expression.length()) {
-            char currentChar = expression.charAt(position);
+        // Parse the main expression (handles + and -)
+        private double parseExpression () {
+            double result = parseTerm();
 
-            if (currentChar == '+') {
-                position++; // Skip the operator
-                result += parseTerm(); // Add the next term
-            } else if (currentChar == '-') {
-                position++; // Skip the operator
-                result -= parseTerm(); // Subtract the next term
+            while (position < expression.length()) {
+                char currentChar = expression.charAt(position);
+
+                if (currentChar == '+') {
+                    position++; // Skip the operator
+                    result += parseTerm(); // Add the next term
+                } else if (currentChar == '-') {
+                    position++; // Skip the operator
+                    result -= parseTerm(); // Subtract the next term
+                } else {
+                    break;
+                }
+            }
+            return result;
+        }
+
+        // Parse terms (handles * and /)
+        private double parseTerm () {
+            double result = parseFactor();
+
+            while (position < expression.length()) {
+                char currentChar = expression.charAt(position);
+
+                if (currentChar == '*') {
+                    position++; // Skip the operator
+                    result *= parseFactor(); // Multiply by the next factor
+                } else if (currentChar == '/') {
+                    position++; // Skip the operator
+                    result /= parseFactor(); // Divide by the next factor
+                } else {
+                    break;
+                }
+            }
+            return result;
+        }
+
+        // Parse factors (handles numbers, parentheses, and implicit multiplication)
+        private double parseFactor () {
+            double result = 0;
+
+            if (position < expression.length() && expression.charAt(position) == '(') {
+                position++; // Skip the '('
+                result = parseExpression(); // Recursively parse the expression inside parentheses
+                if (position < expression.length() && expression.charAt(position) == ')') {
+                    position++; // Skip the ')'
+                }
             } else {
-                break;
+                result = parseNumber(); // Parse the number
             }
-        }
-        return result;
-    }
 
-    // Parse terms (handles * and /)
-    private double parseTerm() {
-        double result = parseFactor();
-
-        while (position < expression.length()) {
-            char currentChar = expression.charAt(position);
-
-            if (currentChar == '*') {
-                position++; // Skip the operator
-                result *= parseFactor(); // Multiply by the next factor
-            } else if (currentChar == '/') {
-                position++; // Skip the operator
-                result /= parseFactor(); // Divide by the next factor
-            } else {
-                break;
+            // Handle implicit multiplication when a number is followed directly by a '('
+            if (position < expression.length() && expression.charAt(position) == '(') {
+                result *= parseFactor(); // Multiply by the result inside parentheses
             }
+
+            return result;
         }
-        return result;
-    }
 
-    // Parse factors (handles numbers, parentheses, and implicit multiplication)
-    private double parseFactor() {
-        double result = 0;
+        // Parse a number (can handle integers and decimals)
+        private double parseNumber () {
+            StringBuilder number = new StringBuilder();
+            boolean isDecimal = false;
 
-        if (position < expression.length() && expression.charAt(position) == '(') {
-            position++; // Skip the '('
-            result = parseExpression(); // Recursively parse the expression inside parentheses
-            if (position < expression.length() && expression.charAt(position) == ')') {
-                position++; // Skip the ')'
+            while (position < expression.length()) {
+                char currentChar = expression.charAt(position);
+                if (Character.isDigit(currentChar)) {
+                    number.append(currentChar);
+                    position++;
+                } else if (currentChar == '.' && !isDecimal) {
+                    number.append(currentChar);
+                    isDecimal = true;
+                    position++;
+                } else {
+                    break;
+                }
             }
-        } else {
-            result = parseNumber(); // Parse the number
+            return Double.parseDouble(number.toString());
         }
 
-        // Handle implicit multiplication when a number is followed directly by a '('
-        if (position < expression.length() && expression.charAt(position) == '(') {
-            result *= parseFactor(); // Multiply by the result inside parentheses
+        public static void displayCalculator() {
+        System.out.println("Welcome to the Calculator \n Enter a maths expression: ");
+        Scanner scanner = new Scanner(System.in);
+        String expression = scanner.nextLine();
+
+        try {
+            double result = Calculator.evaluateExpression(expression);
+            System.out.println("Result:" + result);
+        } catch (Exception e) {
+            System.out.println("Invalid expression. Enter valid expression");
         }
 
-        return result;
+        }
     }
-
-    // Parse a number (can handle integers and decimals)
-    private double parseNumber() {
-        StringBuilder number = new StringBuilder();
-        boolean isDecimal = false;
-
-        while (position < expression.length()) {
-            char currentChar = expression.charAt(position);
-            if (Character.isDigit(currentChar)) {
-                number.append(currentChar);
-                position++;
-            } else if (currentChar == '.' && !isDecimal) {
-                number.append(currentChar);
-                isDecimal = true;
-                position++;
-            } else {
-                break;
-            }
-        }
-        return Double.parseDouble(number.toString());
-    }
-}

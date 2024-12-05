@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class TaxCalculator {
-    public static void main(String[] args) {
+   public static void displayTaxCalculator() {
 
         Scanner input = new Scanner(System.in);
 
@@ -55,5 +55,13 @@ public class TaxCalculator {
         System.out.printf("Your total tax is: €%.2f%n", totalTax);
         System.out.printf("Your net income is: €%.2f%n", netIncome);
 
+       // Prompt the user to continue or exit
+       System.out.println("Press 'E' to exit or any other key to perform another calculation.");
+
+       String choice = input.next();
+       if (choice.equalsIgnoreCase("E")) {
+           return;
+
+       }
     }
 }
