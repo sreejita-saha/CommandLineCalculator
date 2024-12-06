@@ -8,14 +8,14 @@ public class TemperatureConverter {
         String continueChoice;
 
         while (true) {
-            System.out.println("Welcome to the Temperature Converter.");
+            System.out.println("Welcome to the Temperature Converter."); // lists the options available
             System.out.println("The following options are: \n" +
                     "1. Celsius (C°) to Fahrenheit (°F)     2. Fahrenheit (°F) to Celsius (C°)\n" +
                     "3. Celsius (C°) to Kelvin (K)          4. Kelvin (K) to Celsius (C°)\n" +
                     "5. Fahrenheit (°F) to Kelvin (K)       6. Kelvin (K) to Fahrenheit (°F)\n");
 
             System.out.print("Select one of the following options: ");
-            temperatureOption = input.nextInt();
+            temperatureOption = input.nextInt(); // takes input from user
 
             // Exit condition
             if (temperatureOption == 0) {
