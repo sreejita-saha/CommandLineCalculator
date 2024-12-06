@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); // Create the scanner outside the loop
+        Scanner input = new Scanner(System.in); // Create the scanner outside the loop
 
         while (true) {
             System.out.println("Welcome to the Command Line Calculator. \nYou can choose from the following options: \n" +
@@ -11,8 +11,8 @@ public class Main {
                     "5. Tax Calculator             6. Temperature Converter \n" +
                     "0. Exit");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character after nextInt()
+            int choice = input.nextInt();
+            input.nextLine(); // Consume the newline character after nextInt()
 
             if (choice < 0 || choice > 6) {
                 System.out.println("Invalid choice, please enter a valid choice.");
@@ -40,7 +40,7 @@ public class Main {
                     break;
                 case 0:
                     System.out.println("Thank you for using our Tradesmen Calculator. We hope to see you again soon. \nExiting...");
-                    scanner.close();  // Close the scanner at the end
+                    input.close();  // Close the scanner at the end
                     return;
                 default:
                     System.out.println("Invalid choice, please enter a valid choice.");
