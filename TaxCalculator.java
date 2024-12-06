@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class TaxCalculator {
-    public static void displayTaxCalculator(){
+    public static void displayTaxCalculator() {
         Scanner input = new Scanner(System.in);
-        String repeatCalculation;  
+        String repeatCalculation;
 
-        while (true) { 
+        while (true) {
             System.out.print("Welcome to the Tax Calculator.\nPlease enter your gross income for this year:");
             double grossInc = input.nextDouble();
 
@@ -68,4 +68,5 @@ public class TaxCalculator {
                 break;  // Exit if the user enters something other than "y" or "n"
             }
         }
+    }
 }

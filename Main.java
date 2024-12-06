@@ -5,14 +5,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in); // Create the scanner outside the loop
 
         while (true) {
-           
             System.out.println("Welcome to the Command Line Calculator. \nYou can choose from the following options: \n" +
                     "1. Expression Calculator      2. Area Calculator \n" +
                     "3. Currency Converter         4. Length Converter \n" +
                     "5. Tax Calculator             6. Temperature Converter \n" +
                     "0. Exit");
 
-      
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character after nextInt()
 
@@ -26,10 +24,10 @@ public class Main {
                     Calculator.displayCalculator(scanner);
                     break;
                 case 2:
-                    AreaCalculator.displayAreaCalculator(); 
+                    AreaCalculator.displayAreaCalculator(); // Corrected 'input' to 'scanner'
                     break;
                 case 3:
-                    CurrencyConverter.displayCurrencyConverter(); 
+                    CurrencyConverter.displayCurrencyConverter();
                     break;
                 case 4:
                     LengthConverter.displayLengthCalculator();
@@ -38,7 +36,7 @@ public class Main {
                     TaxCalculator.displayTaxCalculator();
                     break;
                 case 6:
-                    TemperatureConverter.displayTemperatureConverter(); 
+                    TemperatureConverter.displayTemperatureConverter();
                     break;
                 case 0:
                     System.out.println("Thank you for using our Tradesmen Calculator. We hope to see you again soon. \nExiting...");
