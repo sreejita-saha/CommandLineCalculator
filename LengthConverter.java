@@ -3,6 +3,7 @@ import java.util.*;
 public class LengthConverter {
 
     public static void displayLengthCalculator() {
+        LengthConversions lengthConversions = new LengthConversions(); // creating object
         Scanner input = new Scanner(System.in);
         double lengthConversion = 0;
         int lengthOption = 0;
