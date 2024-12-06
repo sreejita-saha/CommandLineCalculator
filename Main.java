@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,15 +11,15 @@ public class Main {
                     "5. Tax Calculator             6. Temperature Converter \n" +
                     "0. Exit");
 
-            int choice = input.nextInt();
+            int option = input.nextInt();
             input.nextLine(); // Consume the newline character after nextInt()
 
-            if (choice < 0 || choice > 6) {
-                System.out.println("Invalid choice, please enter a valid choice.");
+            if (option < 0 || option > 6) {
+                System.out.println("Invalid option, please enter a valid option.");
                 continue;
             }
 
-            switch (choice) {
+            switch (option) {
                 case 1:
                     Calculator.displayCalculator(input);
                     break;
@@ -43,7 +43,7 @@ public class Main {
                     input.close();  // Close the scanner at the end
                     return;
                 default:
-                    System.out.println("Invalid choice, please enter a valid choice.");
+                    System.out.println("Invalid option, please enter a valid option.");
             }
         }
     }
