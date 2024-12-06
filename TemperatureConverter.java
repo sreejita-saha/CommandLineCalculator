@@ -61,14 +61,14 @@ public class TemperatureConverter {
                     break;
             }
 
-            System.out.print("Do you want to perform another conversion? (y/n): ");
+            System.out.print("Do you want to perform another conversion? (YES/NO): ");
             continueChoice = input.next().trim().toLowerCase();
 
-            if (continueChoice.equals("n")) {
+            if (continueChoice.equalsIgnoreCase("NO")) {
                 System.out.println("Exiting Temperature Converter... \n ");
                 break;
-            } else if (!continueChoice.equals("y")) {
-                System.out.println("Invalid input. Exiting the program.");
+            } else if (!continueChoice.equalsIgnoreCase("YES")) {
+                System.out.println("Invalid input. Exiting the temperature converter.");
                 break;
             }
         }
