@@ -21,7 +21,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    Calculator.displayCalculator(scanner);
+                    Calculator.displayCalculator(input);
                     break;
                 case 2:
                     AreaCalculator.displayAreaCalculator(); // Corrected 'input' to 'scanner'
