@@ -1,7 +1,3 @@
-/*
-Just did some odd length conversions
-*/
-
 import java.util.*;
 
 public class LengthConverter {
@@ -41,27 +37,27 @@ public class LengthConverter {
             // Perform the conversion based on the user's choice
             switch (lengthOption) {
                 case 1: // Meters to Yards
-                    lengthConversion = length * 1.09361;
+                    lengthConversion = lengthConversions.metersToYards(length);
                     System.out.println(length + " meters is " + lengthConversion + " yards");
                     break;
                 case 2: // Yards to Meters
-                    lengthConversion = length * 0.9144;
+                    lengthConversion = lengthConversions.yardsToMeters(length);
                     System.out.println(length + " yards is " + lengthConversion + " meters");
                     break;
                 case 3: // Kilometers to Miles
-                    lengthConversion = length * 0.621371;
+                    lengthConversion = lengthConversions.kilometersToMiles(length);
                     System.out.println(length + " kilometers is " + lengthConversion + " miles");
                     break;
                 case 4: // Miles to Kilometers
-                    lengthConversion = length * 1.60934;
+                    lengthConversion = lengthConversions.milesToKilometers(length);
                     System.out.println(length + " miles is " + lengthConversion + " kilometers");
                     break;
                 case 5: // Inches to Centimeters
-                    lengthConversion = length * 2.54;
+                    lengthConversion = lengthConversions.inchesToCentimeters(length);
                     System.out.println(length + " inches is " + lengthConversion + " cm");
                     break;
                 case 6: // Centimeters to Inches
-                    lengthConversion = length / 2.54;
+                    lengthConversion = lengthConversions.centimetersToInches(length);
                     System.out.println(length + " cm is " + lengthConversion + " inches");
                     break;
             }
