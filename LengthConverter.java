@@ -2,7 +2,7 @@
 Just did some odd length conversions
 */
 
-import java.util.Scanner;
+import java.util.*;
 
 public class LengthConverter {
 

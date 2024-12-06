@@ -8,14 +8,15 @@ public class TemperatureConverter {
         String continueChoice;
 
         while (true) {
-            System.out.println("Welcome to the Temperature Converter.");
+            System.out.println("Welcome to the Temperature Converter."); // lists the options available
             System.out.println("The following options are: \n" +
                     "1. Celsius (C°) to Fahrenheit (°F)     2. Fahrenheit (°F) to Celsius (C°)\n" +
                     "3. Celsius (C°) to Kelvin (K)          4. Kelvin (K) to Celsius (C°)\n" +
-                    "5. Fahrenheit (°F) to Kelvin (K)       6. Kelvin (K) to Fahrenheit (°F)\n");
+                    "5. Fahrenheit (°F) to Kelvin (K)       6. Kelvin (K) to Fahrenheit (°F)\n" +
+                    "0. Exit");
 
             System.out.print("Select one of the following options: ");
-            temperatureOption = input.nextInt();
+            temperatureOption = input.nextInt(); // takes input from user
 
             // Exit condition
             if (temperatureOption == 0) {
@@ -61,14 +62,14 @@ public class TemperatureConverter {
                     break;
             }
 
-            System.out.print("Do you want to perform another conversion? (y/n): ");
+            System.out.print("Do you want to perform another conversion? (YES/NO): ");
             continueChoice = input.next().trim().toLowerCase();
 
-            if (continueChoice.equals("n")) {
+            if (continueChoice.equalsIgnoreCase("NO")) {
                 System.out.println("Exiting Temperature Converter... \n ");
                 break;
-            } else if (!continueChoice.equals("y")) {
-                System.out.println("Invalid input. Exiting the program.");
+            } else if (!continueChoice.equalsIgnoreCase("YES")) {
+                System.out.println("Invalid input. Exiting the temperature converter.");
                 break;
             }
         }
