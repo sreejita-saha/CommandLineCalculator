@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Calculator {
-
     private String expression;
     private int position;
 
+    // Constructor to initialize the expression
     public Calculator(String expression) {
         this.expression = expression;
         this.position = 0;
@@ -96,5 +96,27 @@ public class Calculator {
             }
         }
         return Double.parseDouble(number.toString());
+    }
+
+    public static void displayCalculator(Scanner scanner) {
+        while (true) {
+            System.out.println("Enter a mathematical expression (to quit press 'q'): ");
+            String userInput = scanner.nextLine();
+
+            
+            if (userInput.equalsIgnoreCase("q")) {
+                System.out.println("Exiting the calculator... \n ");
+                break;
+            }
+
+            
+            Calculator calculator = new Calculator(userInput);
+            try {
+                double result = calculator.evaluate();
+                System.out.println("Result: " + result);
+            } catch (Exception e) {
+                System.out.println("Error evaluating expression. Please try again.");
+            }
+        }
     }
 }
