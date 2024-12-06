@@ -2,6 +2,7 @@ import java.util.*;
 
 public class TemperatureConverter {
     public static void displayTemperatureConverter() {
+        TemperatureConversions temperatureConversions = new TemperatureConversions();
         Scanner input = new Scanner(System.in);
         double temperatureConversion = 0;
         int temperatureOption = 0;
