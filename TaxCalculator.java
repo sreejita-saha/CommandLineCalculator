@@ -1,12 +1,14 @@
-import java.util.Scanner;
+import java.util.Scanner; //Importing scanner for user input
 
 public class TaxCalculator {
-    public static void displayTaxCalculator() {
-        Scanner input = new Scanner(System.in);
-        String repeatCalculation;
 
-        while (true) {
-            System.out.print("Welcome to the Tax Calculator.\nPlease enter your gross income for this year:");
+    public static void displayTaxCalculator() {  //Method to call and display in the main
+        Scanner input = new Scanner(System.in); //Scanner object
+        String repeatCalculation; //declaring, needed for repeat option
+
+        while (true) { //While true loop to allow user to make multiple calculations
+            System.out.print("Welcome to the Tax Calculator.");
+            System.out.println("Please enter your gross income for this year: ");
             double grossInc = input.nextDouble();
 
             System.out.print("Enter your percentage of pension contribution: ");
