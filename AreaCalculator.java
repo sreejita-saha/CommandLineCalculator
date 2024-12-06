@@ -1,35 +1,36 @@
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 
 public class AreaCalculator {
+
     private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<Double> savedAreas = new ArrayList<>();
 
     public static void displayAreaCalculator() {
         while (true) {
             System.out.println("The following options are: ");
-            System.out.println("1. Floor/Wall Area (Rectangle)          2. Circle Area");
-            System.out.println("3. Sector of a Circle Area              4. Triangle Area");
-            System.out.println("5. Trapezoid Area                       6. Parallelogram Area");
-            System.out.println("7. Recall Saved Areas                   8. Add All Saved Areas");
-            System.out.println("0. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.print(  "1. Floor/Wall Area (Rectangle)   2. Circle Area           3. Sector of a Circle Area \n" +
+                    "4. Triangle Area                 5. Trapezoid Area        6. Parallelogram Area \n" +
+                    "7. Recall Saved Areas            8. Add All Saved Areas   0. Exit \n" +
+                    "Please enter dimensions in meters. If you need areas in different units you can use our Length converter \n" +
+                    "Enter your choice: ");
+
             int choice = scanner.nextInt();
 
+            double area;
             switch (choice) {
                 case 1: // Rectangle
                     System.out.print("Enter the length (in meters): ");
                     double length = scanner.nextDouble();
                     System.out.print("Enter the width (in meters): ");
                     double width = scanner.nextDouble();
-                    double area = length * width;
+                    area = Shapes.calculateRectangleArea(length, width);
                     saveAreaPrompt(area);
                     break;
 
                 case 2: // Circle
                     System.out.print("Enter the radius (in meters): ");
                     double radius = scanner.nextDouble();
-                    area = Math.PI * radius * radius;
+                    area = Shapes.calculateCircleArea(radius);
                     saveAreaPrompt(area);
                     break;
 
@@ -38,7 +39,7 @@ public class AreaCalculator {
                     double sectorRadius = scanner.nextDouble();
                     System.out.print("Enter the angle (in degrees): ");
                     double angle = scanner.nextDouble();
-                    area = (Math.PI * Math.pow(sectorRadius, 2) * angle) / 360;
+                    area = Shapes.calculateSectorArea(sectorRadius, angle);
                     saveAreaPrompt(area);
                     break;
 
@@ -47,7 +48,7 @@ public class AreaCalculator {
                     double base = scanner.nextDouble();
                     System.out.print("Enter the height (in meters): ");
                     double height = scanner.nextDouble();
-                    area = 0.5 * base * height;
+                    area = Shapes.calculateTriangleArea(base, height);
                     saveAreaPrompt(area);
                     break;
 
@@ -58,20 +59,18 @@ public class AreaCalculator {
                     double base2 = scanner.nextDouble();
                     System.out.print("Enter the height (in meters): ");
                     double trapezoidHeight = scanner.nextDouble();
-                    area = 0.5 * (base1 + base2) * trapezoidHeight;
+                    area = Shapes.calculateTrapezoidArea(base1, base2, trapezoidHeight);
                     saveAreaPrompt(area);
                     break;
-
                 case 6: // Parallelogram
                     System.out.print("Enter the base length (in meters): ");
                     double parallelogramBase = scanner.nextDouble();
                     System.out.print("Enter the height (in meters): ");
                     double parallelogramHeight = scanner.nextDouble();
-                    area = parallelogramBase * parallelogramHeight;
+                    area = Shapes.calculateParallelogramArea(parallelogramBase, parallelogramHeight);
                     saveAreaPrompt(area);
                     break;
-
-                case 7: // Recall and show Saved Areas
+                case 7:
                     if (savedAreas.isEmpty()) {
                         System.out.println("No areas saved yet.");
                     } else {
@@ -81,8 +80,7 @@ public class AreaCalculator {
                         }
                     }
                     break;
-
-                case 8: // Add All Saved Areas
+                case 8:
                     if (savedAreas.isEmpty()) {
                         System.out.println("No areas saved yet.");
                     } else {
@@ -93,11 +91,9 @@ public class AreaCalculator {
                         System.out.printf("The total of all saved areas is: %.2f square meters.%n", totalArea);
                     }
                     break;
-
                 case 0:
-                    System.out.println("Exiting Area Calculator...");
+                    System.out.println("Exiting Area Calculator...\n ");
                     return;
-
                 default:
                     System.out.println("Invalid choice. Please select a valid option.");
             }
@@ -110,16 +106,13 @@ public class AreaCalculator {
         while (true) {
             System.out.print("Do you want to save this area for future use? (y/n): ");
             String saveChoice = scanner.next().trim().toLowerCase();
-            /* trim(). gets rid of any whitespaces
-            toLowerCase() turns input into lowercase so Y and y can be used.
-             */
 
             if (saveChoice.equals("y")) {
                 savedAreas.add(area);
-                System.out.println("Area saved for future use.");
+                System.out.println("Area saved for future use. \n ");
                 break;
             } else if (saveChoice.equals("n")) {
-                System.out.println("Area was not saved.");
+                System.out.println("Area was not saved. \n ");
                 break;
             } else {
                 System.out.println("Invalid input. Please enter 'y' or 'n'.");
