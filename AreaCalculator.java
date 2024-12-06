@@ -1,8 +1,9 @@
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Books {
+public class AreaCalculator {
     private static final List<Double> savedAreas = new ArrayList<>();  // Stores user-selected areas
     private static final Scanner input = new Scanner(System.in);  // Shared Scanner instance
 
