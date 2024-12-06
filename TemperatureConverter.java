@@ -12,7 +12,8 @@ public class TemperatureConverter {
             System.out.println("The following options are: \n" +
                     "1. Celsius (C°) to Fahrenheit (°F)     2. Fahrenheit (°F) to Celsius (C°)\n" +
                     "3. Celsius (C°) to Kelvin (K)          4. Kelvin (K) to Celsius (C°)\n" +
-                    "5. Fahrenheit (°F) to Kelvin (K)       6. Kelvin (K) to Fahrenheit (°F)\n");
+                    "5. Fahrenheit (°F) to Kelvin (K)       6. Kelvin (K) to Fahrenheit (°F)\n" +
+                    "0. Exit");
 
             System.out.print("Select one of the following options: ");
             temperatureOption = input.nextInt(); // takes input from user
