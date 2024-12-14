@@ -9,12 +9,12 @@ public class Main {
                     "1. Expression Calculator      2. Area Calculator \n" +
                     "3. Currency Converter         4. Length Converter \n" +
                     "5. Tax Calculator             6. Temperature Converter \n" +
-                    "0. Exit");
+                    "7. Matrix Calculator          0. Exit");
 
             int option = input.nextInt();
             input.nextLine(); // Consume the newline character after nextInt()
 
-            if (option < 0 || option > 6) {
+            if (option < 0 || option > 7) {
                 System.out.println("Invalid option, please enter a valid option.");
                 continue;
             }
@@ -37,6 +37,9 @@ public class Main {
                     break;
                 case 6:
                     TemperatureConverter.displayTemperatureConverter();
+                    break;
+                case 7:
+                    MatrixCalculator.displayMatrixCalculator();
                     break;
                 case 0:
                     System.out.println("Thank you for using our Tradesmen Calculator. We hope to see you again soon. \nExiting...");
