@@ -1,14 +1,20 @@
-import java.util.*;
+import java.awt.geom.Area;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in); // Create the scanner outside the loop
+        Scanner input = new Scanner(System.in);
+
+
+        LengthConverter lengthConverter = new LengthConverter();
+        TemperatureConverter temperatureConverter = new TemperatureConverter();
+        CurrencyConverter currencyConverter = new CurrencyConverter(); // Instance of CurrencyConverter
 
         while (true) {
             System.out.println("Welcome to the Command Line Calculator. \nYou can choose from the following options: \n" +
-                    "1. Expression Calculator      2. Area Calculator \n" +
+                    "1. Calculator                 2. Area Calculator \n" +
                     "3. Currency Converter         4. Length Converter \n" +
-                    "5. Tax Calculator             6. Temperature Converter \n" +
+                    "5. Temperature Converter      6. Tax Calculator \n" +
                     "7. Matrix Calculator          0. Exit");
 
             int option = input.nextInt();
@@ -21,22 +27,22 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    Calculator.displayCalculator(input);
+                    Calculator.displayCalculator();
                     break;
                 case 2:
-                    AreaCalculator.displayAreaCalculator(); // Corrected 'input' to 'scanner'
+                    AreaCalculator.displayAreaCalculator();
                     break;
                 case 3:
-                    CurrencyConverter.displayCurrencyConverter();
+                    currencyConverter.runConverter();  // Run the currency converter
                     break;
                 case 4:
-                    LengthConverter.displayLengthCalculator();
+                    lengthConverter.runConverter();  // Run the length converter
                     break;
                 case 5:
-                    TaxCalculator.displayTaxCalculator();
+                    temperatureConverter.runConverter();
                     break;
                 case 6:
-                    TemperatureConverter.displayTemperatureConverter();
+                    TaxCalculator.displayTaxCalculator();
                     break;
                 case 7:
                     MatrixCalculator.displayMatrixCalculator();
@@ -44,7 +50,7 @@ public class Main {
                 case 0:
                     System.out.println("Thank you for using our Tradesmen Calculator. We hope to see you again soon. \nExiting...");
                     input.close();  // Close the scanner at the end
-                    return;
+                    return; // Exit the program
                 default:
                     System.out.println("Invalid option, please enter a valid option.");
             }
