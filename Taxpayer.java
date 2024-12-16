@@ -1,3 +1,4 @@
+// Taxpayer Class - Stores Data and manages data
 public class Taxpayer {
     private double grossIncome;
     private double pensionContribution;
@@ -5,7 +6,6 @@ public class Taxpayer {
     private double phb;
     private double taxCredits;
 
-    // Constructor
     public Taxpayer(double grossIncome, double pensionContribution, double prsa, double phb, double taxCredits) {
         this.grossIncome = grossIncome;
         this.pensionContribution = pensionContribution;
@@ -14,7 +14,7 @@ public class Taxpayer {
         this.taxCredits = taxCredits;
     }
 
-    // Getter methods
+    // Getters and Setters (same as before)
     public double getGrossIncome() {
         return grossIncome;
     }
@@ -33,5 +33,25 @@ public class Taxpayer {
 
     public double getTaxCredits() {
         return taxCredits;
+    }
+
+    public void setGrossIncome(double grossIncome) {
+        this.grossIncome = grossIncome;
+    }
+
+    public void setPensionContribution(double pensionContribution) {
+        this.pensionContribution = pensionContribution;
+    }
+
+    public void setPrsa(double prsa) {
+        this.prsa = prsa;
+    }
+
+    public void setPhb(double phb) {
+        this.phb = phb;
+    }
+
+    public void setTaxCredits(double taxCredits) {
+        this.taxCredits = taxCredits;
     }
 }
