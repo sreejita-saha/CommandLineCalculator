@@ -1,8 +1,7 @@
 
 import java.util.*;
 
-public class AreaCalculator extends LengthConversions {
-
+public class AreaCalculator {
     private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<Double> savedAreas = new ArrayList<>();
 
