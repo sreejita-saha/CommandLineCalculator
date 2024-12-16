@@ -1,78 +1,53 @@
-import java.util.*;
+import java.util.Scanner;
 
-public class TemperatureConverter {
-    public static void displayTemperatureConverter() {
-        TemperatureConversions temperatureConversions = new TemperatureConversions(); // creating object
-        Scanner input = new Scanner(System.in);
-        double temperatureConversion = 0;
-        int temperatureOption = 0;
-        String continueChoice;
+public class TemperatureConverter extends BaseConverter {
+    private final TemperatureConversions temperatureConversions = new TemperatureConversions();
+    private final Scanner input = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("Welcome to the Temperature Converter."); // lists the options available
-            System.out.println("The following options are: \n" +
-                    "1. Celsius (C°) to Fahrenheit (°F)     2. Fahrenheit (°F) to Celsius (C°)\n" +
-                    "3. Celsius (C°) to Kelvin (K)          4. Kelvin (K) to Celsius (C°)\n" +
-                    "5. Fahrenheit (°F) to Kelvin (K)       6. Kelvin (K) to Fahrenheit (°F)\n" +
-                    "0. Exit");
 
-            System.out.print("Select one of the following options: ");
-            temperatureOption = input.nextInt(); // takes input from user
+    @Override
+    public void displayMenu() {
+        System.out.println("Welcome to the Temperature Converter.");
+        System.out.println("The following options are: \n" +
+                "1. Celsius to Fahrenheit     2. Fahrenheit to Celsius\n" +
+                "3. Celsius to Kelvin         4. Kelvin to Celsius\n" +
+                "5. Fahrenheit to Kelvin      6. Kelvin to Fahrenheit\n" +
+                "0. Exit");
+    }
 
-            // Exit condition
-            if (temperatureOption == 0) {
-                System.out.println("Exiting Temperature Converter...");
+    @Override
+    public void performConversion(int choice) {
+        System.out.print("Enter the temperature: ");
+        double temperature = input.nextDouble();
+        double convertedTemperature = 0;
+
+        switch (choice) {
+            case 1:
+                convertedTemperature = temperatureConversions.celsiusToFahrenheit(temperature);
+                System.out.println(temperature + " C° to Fahrenheit is " + convertedTemperature + " °F");
                 break;
-            }
-
-            // Validate input choice
-            if (temperatureOption < 1 || temperatureOption > 6) {
-                System.out.println("Please select a number between 1 and 6!");
-                continue;
-            }
-
-            // Ask for temperature value
-            System.out.print("Enter the temperature: ");
-            double temperature = input.nextDouble();
-
-           // Perform the conversion based on user's choice
-            switch (temperatureOption) {
-                case 1: // Celsius to Fahrenheit
-                    temperatureConversion = temperatureConversions.celsiusToFahrenheit(temperature);
-                    System.out.println(temperature + " C° to Fahrenheit is " + temperatureConversion + " °F");
-                    break;
-                case 2: // Fahrenheit to Celsius
-                    temperatureConversion = temperatureConversions.fahrenheitToCelsius(temperature);
-                    System.out.println(temperature + " °F to Celsius is " + temperatureConversion + " C°");
-                    break;
-                case 3: // Celsius to Kelvin
-                    temperatureConversion = temperatureConversions.celsiusToKelvin(temperature);
-                    System.out.println(temperature + " C° to Kelvin is " + temperatureConversion + " K");
-                    break;
-                case 4: // Kelvin to Celsius
-                    temperatureConversion = temperatureConversions.kelvinToCelsius(temperature);
-                    System.out.println(temperature + " K to Celsius is " + temperatureConversion + " C°");
-                    break;
-                case 5: // Fahrenheit to Kelvin
-                    temperatureConversion = temperatureConversions.fahrenheitToKelvin(temperature);
-                    System.out.println(temperature + " °F to Kelvin is " + temperatureConversion + " K");
-                    break;
-                case 6: // Kelvin to Fahrenheit
-                    temperatureConversion = temperatureConversions.kelvinToFahrenheit(temperature);
-                    System.out.println(temperature + " K to Fahrenheit is " + temperatureConversion + " °F");
-                    break;
-            }
-
-            System.out.print("Do you want to perform another conversion? (YES/NO): ");
-            continueChoice = input.next().trim().toLowerCase();
-
-            if (continueChoice.equalsIgnoreCase("NO")) {
-                System.out.println("Exiting Temperature Converter... \n ");
+            case 2:
+                convertedTemperature = temperatureConversions.fahrenheitToCelsius(temperature);
+                System.out.println(temperature + " °F to Celsius is " + convertedTemperature + " C°");
                 break;
-            } else if (!continueChoice.equalsIgnoreCase("YES")) {
-                System.out.println("Invalid input. Exiting the temperature converter.");
+            case 3:
+                convertedTemperature = temperatureConversions.celsiusToKelvin(temperature);
+                System.out.println(temperature + " C° to Kelvin is " + convertedTemperature + " K");
                 break;
-            }
+            case 4:
+                convertedTemperature = temperatureConversions.kelvinToCelsius(temperature);
+                System.out.println(temperature + " K to Celsius is " + convertedTemperature + " C°");
+                break;
+            case 5:
+                convertedTemperature = temperatureConversions.fahrenheitToKelvin(temperature);
+                System.out.println(temperature + " °F to Kelvin is " + convertedTemperature + " K");
+                break;
+            case 6:
+                convertedTemperature = temperatureConversions.kelvinToFahrenheit(temperature);
+                System.out.println(temperature + " K to Fahrenheit is " + convertedTemperature + " °F");
+                break;
+            default:
+                System.out.println("Invalid choice. Please select a valid option.");
         }
     }
 }
