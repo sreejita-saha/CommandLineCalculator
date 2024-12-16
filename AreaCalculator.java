@@ -1,6 +1,7 @@
+
 import java.util.*;
 
-public class AreaCalculator {
+public class AreaCalculator extends LengthConversions {
 
     private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<Double> savedAreas = new ArrayList<>();
@@ -24,14 +25,14 @@ public class AreaCalculator {
                     System.out.print("Enter the width (in meters): ");
                     double width = scanner.nextDouble();
                     area = Shapes.calculateRectangleArea(length, width);
-                    saveAreaPrompt(area);
+                    saveArea(area);
                     break;
 
                 case 2: // Circle
                     System.out.print("Enter the radius (in meters): ");
                     double radius = scanner.nextDouble();
                     area = Shapes.calculateCircleArea(radius);
-                    saveAreaPrompt(area);
+                    saveArea(area);
                     break;
 
                 case 3: // Sector of a Circle
@@ -40,7 +41,7 @@ public class AreaCalculator {
                     System.out.print("Enter the angle (in degrees): ");
                     double angle = scanner.nextDouble();
                     area = Shapes.calculateSectorArea(sectorRadius, angle);
-                    saveAreaPrompt(area);
+                    saveArea(area);
                     break;
 
                 case 4: // Triangle
@@ -49,7 +50,7 @@ public class AreaCalculator {
                     System.out.print("Enter the height (in meters): ");
                     double height = scanner.nextDouble();
                     area = Shapes.calculateTriangleArea(base, height);
-                    saveAreaPrompt(area);
+                    saveArea(area);
                     break;
 
                 case 5: // Trapezoid
@@ -60,16 +61,18 @@ public class AreaCalculator {
                     System.out.print("Enter the height (in meters): ");
                     double trapezoidHeight = scanner.nextDouble();
                     area = Shapes.calculateTrapezoidArea(base1, base2, trapezoidHeight);
-                    saveAreaPrompt(area);
+                    saveArea(area);
                     break;
+
                 case 6: // Parallelogram
                     System.out.print("Enter the base length (in meters): ");
                     double parallelogramBase = scanner.nextDouble();
                     System.out.print("Enter the height (in meters): ");
                     double parallelogramHeight = scanner.nextDouble();
                     area = Shapes.calculateParallelogramArea(parallelogramBase, parallelogramHeight);
-                    saveAreaPrompt(area);
+                    saveArea(area);
                     break;
+
                 case 7:
                     if (savedAreas.isEmpty()) {
                         System.out.println("No areas saved yet.");
@@ -100,7 +103,7 @@ public class AreaCalculator {
         }
     }
 
-    private static void saveAreaPrompt(double area) {
+    private static void saveArea(double area) {
         System.out.println("The calculated area is: " + area + " square meters.");
 
         while (true) {
