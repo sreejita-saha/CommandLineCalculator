@@ -1,3 +1,5 @@
+//Written by Harry Kikkers and Sreejita Saha
+
 /// <summary> Class for the user interface for the Main Calculator.
 /// A stack-based calculator evaluates mathematical expressions by using two stacks: one for operands
 /// (numbers) and one for operators (such as +, -, *, /, ^). It processes the expression from left to
