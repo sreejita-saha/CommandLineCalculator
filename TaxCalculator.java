@@ -2,8 +2,31 @@ import java.util.Scanner;
 
 public class TaxCalculator {
 
-    public static double calculateTax(double grossInc, double pensionCon, double prsa, double phb, double taxCred) {
+    public static void displayTaxCalculator() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to the Tax Calculator.");
 
+        while (true) {
+            double grossIncome = validation(input, "Please enter your gross income for this year: ");
+            double pensionCon = validation(input, "Enter your percentage of pension contribution: ") / 100;
+            double prsa = validation(input, "Enter your percentage of PRSA: ") / 100;
+            double phb = validation(input, "Enter your PHB contribution percentage: ") / 100;
+            double taxCredits = validation(input, "Enter your tax credits: ");
+
+            double totalTax = calculateTax(grossIncome, pensionCon, prsa, phb, taxCredits);
+            double netIncome = grossIncome - totalTax;
+
+            System.out.printf("Your total tax is: €%.2f%n", totalTax);
+            System.out.printf("Your net income is: €%.2f%n", netIncome);
+
+            if (!askContinue(input)) {
+                System.out.println("Exiting Tax Calculator... \n ");
+                break;
+            }
+        }
+    }
+
+    public static double calculateTax(double grossInc, double pensionCon, double prsa, double phb, double taxCred) {
         // Income Tax
         double taxableInc = grossInc - (pensionCon + phb + prsa);
 
@@ -18,10 +41,10 @@ public class TaxCalculator {
             tax = (20000 * 0.2) + (taxableInc - 20000) * 0.4;
         }
 
-        //PRSI
+        // PRSI
         double prsi = taxableInc * 0.04;
 
-        //usc
+        // USC
         double usc = 0;
         if (grossInc > 13000) {
             if (grossInc <= 12012) {
@@ -44,37 +67,7 @@ public class TaxCalculator {
         return totalTax;
     }
 
-    public static boolean displayTaxCalculator() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to the Tax Calculator.");
-
-        while (true) {
-            double grossIncome = getValidDouble(input, "Please enter your gross income for this year: ");
-            double pensionCon = getValidDouble(input, "Enter your percentage of pension contribution: ") / 100;
-            double prsa = getValidDouble(input, "Enter your percentage of PRSA: ") / 100;
-            double phb = getValidDouble(input, "Enter your PHB contribution percentage: ") / 100;
-            double taxCredits = getValidDouble(input, "Enter your tax credits: ");
-
-            double totalTax = calculateTax(grossIncome, pensionCon, prsa, phb, taxCredits);
-            double netIncome = grossIncome - totalTax;
-
-            System.out.printf("Your total tax is: €%.2f%n", totalTax);
-            System.out.printf("Your net income is: €%.2f%n", netIncome);
-
-            System.out.print("Do you want to perform another tax calculation? (YES/NO): ");
-            String continueChoice = input.next().trim().toLowerCase();
-
-            if (continueChoice.equalsIgnoreCase("NO")) {
-                System.out.println("Exiting Tax Calculator... \n ");
-                return false;
-            } else if (!continueChoice.equalsIgnoreCase("YES")) {
-                System.out.println("Invalid input. Exiting the tax calculator. \n ");
-                return false;
-            }
-        }
-    }
-
-    private static double getValidDouble(Scanner input, String prompt) {
+    private static double validation(Scanner input, String prompt) {
         double value = -1;
         while (value < 0) {
             System.out.print(prompt);
@@ -85,9 +78,23 @@ public class TaxCalculator {
                 }
             } else {
                 System.out.println("Invalid input. Please enter a numeric value.");
-                input.next();
+                input.next(); // consume the invalid input
             }
         }
         return value;
+    }
+
+    // Method to ask the user if they want to continue
+    private static boolean askContinue(Scanner input) {
+        System.out.print("Do you want to perform another tax calculation? (Y/N): ");
+        String continueChoice = input.next().trim().toLowerCase();
+
+        if (continueChoice.equalsIgnoreCase("N")) {
+            return false;
+        } else if (!continueChoice.equalsIgnoreCase("Y")) {
+            System.out.println("Invalid input. Exiting the tax calculator. \n ");
+            return false;
+        }
+        return true;
     }
 }
