@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public abstract class BaseConverter {
     protected Scanner input = new Scanner(System.in);
 
