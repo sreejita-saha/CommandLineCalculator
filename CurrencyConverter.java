@@ -1,7 +1,9 @@
+/// <summary> Currency converter that offers multiple conversions for Euro, Dollar, Pound </summary>
+
 import java.util.Scanner;
 
 public class CurrencyConverter extends BaseConverter {
-    private final CurrencyConversions currencyConversions = new CurrencyConversions();
+    private final CurrencyConversions currencyConversions = new CurrencyConversions(); // create CurrencyConversions object to perform the conversions
     private final Scanner input = new Scanner(System.in);
 
     @Override
@@ -21,27 +23,27 @@ public class CurrencyConverter extends BaseConverter {
         double convertedAmount = 0;
 
         switch (choice) {
-            case 1: // Euro to Pound
+            case 1: // Euro - Pound
                 convertedAmount = currencyConversions.euroToPound(amount);
                 System.out.println(amount + " € to Pound is " + convertedAmount + " £");
                 break;
-            case 2: // Euro to Dollar
+            case 2: // Euro - Dollar
                 convertedAmount = currencyConversions.euroToDollar(amount);
                 System.out.println(amount + " € to Dollar is " + convertedAmount + " $");
                 break;
-            case 3: // Pound to Euro
+            case 3: // Pound - Euro
                 convertedAmount = currencyConversions.poundToEuro(amount);
                 System.out.println(amount + " £ to Euro is " + convertedAmount + " €");
                 break;
-            case 4: // Pound to Dollar
+            case 4: // Pound - Dollar
                 convertedAmount = currencyConversions.poundToDollar(amount);
                 System.out.println(amount + " £ to Dollar is " + convertedAmount + " $");
                 break;
-            case 5: // Dollar to Euro
+            case 5: //Pound - Dollar
                 convertedAmount = currencyConversions.dollarToEuro(amount);
                 System.out.println(amount + " $ to Euro is " + convertedAmount + " €");
                 break;
-            case 6: // Dollar to Pound
+            case 6: //Pound - Dollar
                 convertedAmount = currencyConversions.dollarToPound(amount);
                 System.out.println(amount + " $ to Pound is " + convertedAmount + " £");
                 break;

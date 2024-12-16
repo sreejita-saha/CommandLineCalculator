@@ -1,4 +1,4 @@
-// Taxpayer Class - Stores Data and manages data
+/// <summary>Taxpayer Class stores and manages data for Tax Calculator for encapsulation </summary>
 public class Taxpayer {
     private double grossIncome;
     private double pensionContribution;

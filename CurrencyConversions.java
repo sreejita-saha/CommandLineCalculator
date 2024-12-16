@@ -1,3 +1,5 @@
+/// <summary>Methods containing rates for currency conversion </summary>
+
 public class CurrencyConversions {
 
     public double euroToPound(double euro) {

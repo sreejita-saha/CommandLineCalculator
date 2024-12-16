@@ -1,3 +1,5 @@
+/// <summary> Class containing methods of all shapes and formula to calculate the area </summary>
+
 public class Shapes {
     public static double calculateRectangleArea(double length, double width) {
         return length * width;
