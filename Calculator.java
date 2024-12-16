@@ -11,7 +11,7 @@ public class Calculator {
             System.out.println("Enter a mathematical expression (or type 'exit' to quit):");
             String input = scanner.nextLine();
 
-            if (input.equalsIgnoreCase("exit")) {
+            if (input.equalsIgnoreCase("E")) {
                 System.out.println("Exiting the Calculator. Goodbye!");
                 break;
             }
