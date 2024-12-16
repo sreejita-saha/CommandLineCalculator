@@ -17,7 +17,8 @@ class ExpressionProcessor {
 
     private String preprocessExpression(String expression) {
         expression = expression.trim(); // trims leading and trailing spaces
-        expression = expression.replace("", ""); // removes spaces for better parsing
+        expression = expression.replaceAll("\\s", ""); // removes spaces for better parsing
+        expression = expression.replaceAll("([0-9])\\(", "$1*("); // Add multiplication sign between a number and an opening parenthesis
         return expression; // returns the cleaned expression
     }
 

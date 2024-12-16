@@ -49,6 +49,7 @@ public class ExpressionHelper {
         return expression.replace("++", "+");  // replace '++' with '+'
     }
 
+
     // method to perform the operation between two operands
     public static void performOperation(Stack<Double> operandStack, Stack<Character> operatorStack) throws CalculatorException {
         if (operandStack.size() < 2) {

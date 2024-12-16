@@ -34,7 +34,10 @@ public class Calculator {
             } catch (CalculatorException e) { // handle errors
                 System.out.println("Error: " + e.getMessage()); // display error message
             }
-            scanner.close(); // close the scanner
         }
+    }
+
+    public static void main(String[] args) {
+        displayCalculator();
     }
 }
