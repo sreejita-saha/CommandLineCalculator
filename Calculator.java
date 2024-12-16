@@ -22,8 +22,7 @@ public class Calculator {
             } catch (CalculatorException e) {
                 System.out.println("Error: " + e.getMessage());
             }
+            scanner.close();
         }
-
-        scanner.close();
     }
 }
