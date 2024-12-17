@@ -88,7 +88,7 @@ public class MatrixCalculator {
                         double[][] result = matrixOperations.matrixAddition(matrix1, matrix2); // calls matrixAddition to add m1 and m2 and stores in result matrix
                         System.out.println("Result of adding matrix1 and matrix2: ");
                         matrixOperations.displayMatrixResult(result); // calls displayMatrixResult from matrixOperatiosn to display result matrix
-                    } catch (Exception e ) {
+                    } catch (MatrixCalculatorException e ) {
                         System.out.println(e.getMessage());
                     }
                     break;
@@ -97,7 +97,7 @@ public class MatrixCalculator {
                         double[][] result = matrixOperations.matrixSubtraction(matrix1, matrix2); // matrixSubtraction does m1 - m2 and stores in result
                         System.out.println("Result of subtracting matrix2 from matrix1 is: ");
                         matrixOperations.displayMatrixResult(result); // displayMatrixResult displays result
-                    } catch (Exception e) {
+                    } catch (MatrixCalculatorException e) {
                         System.out.println(e.getMessage());
                     }
                     break;
@@ -106,7 +106,7 @@ public class MatrixCalculator {
                         double[][] result = matrixOperations.matrixMultiplication(matrix1, matrix2); // matrixMultiplication does m1*m2 and stores in result
                         System.out.println("Result of multiplying matrix1 and matrix2 together is: ");
                         matrixOperations.displayMatrixResult(result); // displayMatrixResult displays result
-                    } catch (Exception e) {
+                    } catch (MatrixCalculatorException e) {
                         System.out.println(e.getMessage());
                     }
                     break;
