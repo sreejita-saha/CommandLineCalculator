@@ -1,5 +1,4 @@
 //Written by Harry Kikkers and Sreejita Saha
-
 /// <summary> Class for the user interface for the Main Calculator.
 /// A stack-based calculator evaluates mathematical expressions by using two stacks: one for operands
 /// (numbers) and one for operators (such as +, -, *, /, ^). It processes the expression from left to
@@ -19,7 +18,7 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in); // creating scanner object to read user input
         System.out.println("Welcome to the Calculator!"); // displaying welcome message
 
-        ExpressionEvaluator evaluator = new BasicExpressionEvaluator(); // creating an evaluator object using BasicExpressionEvaluator class
+        ExpressionEvaluator evaluator = new ArithmeticExpressionEvaluator(); // creating an evaluator object using BasicExpressionEvaluator class
 
         while (true) { // loop for repeated user input
             System.out.println("Enter a mathematical expression (or type 'exit' to quit):"); // asking user for input
@@ -37,9 +36,5 @@ public class Calculator {
                 System.out.println("Error: " + e.getMessage()); // display error message
             }
         }
-    }
-
-    public static void main(String[] args) {
-        displayCalculator();
     }
 }

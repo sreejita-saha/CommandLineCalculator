@@ -14,7 +14,7 @@ public class Taxpayer {
         this.taxCredits = taxCredits;
     }
 
-    // Getters and Setters (same as before)
+    // Getters and Setters
     public double getGrossIncome() {
         return grossIncome;
     }

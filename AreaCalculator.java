@@ -1,10 +1,11 @@
-
-import java.util.*;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class AreaCalculator {
     private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<Double> savedAreas = new ArrayList<>();
 
+    //display menu method
     public static void displayAreaCalculator() {
         while (true) {
             System.out.println("The following options are: ");
@@ -71,7 +72,7 @@ public class AreaCalculator {
                     area = Shapes.calculateParallelogramArea(parallelogramBase, parallelogramHeight);
                     saveArea(area);
                     break;
-
+                //shows the list of all saved areas
                 case 7:
                     if (savedAreas.isEmpty()) {
                         System.out.println("No areas saved yet.");
@@ -82,13 +83,14 @@ public class AreaCalculator {
                         }
                     }
                     break;
+                //sums the saved areas
                 case 8:
                     if (savedAreas.isEmpty()) {
                         System.out.println("No areas saved yet.");
                     } else {
-                        double totalArea = 0;
-                        for (double savedArea : savedAreas) {
-                            totalArea += savedArea;
+                        double totalArea = 0;  // start with 0 as the total area
+                        for (double savedArea : savedAreas) {  // loop through each saved area
+                            totalArea += savedArea;  // add each saved area to totalArea
                         }
                         System.out.printf("The total of all saved areas is: %.2f square meters.%n", totalArea);
                     }
@@ -101,7 +103,7 @@ public class AreaCalculator {
             }
         }
     }
-
+    //method to ask and save area that is used after each minor calculation
     private static void saveArea(double area) {
         System.out.println("The calculated area is: " + area + " square meters.");
 
@@ -110,7 +112,7 @@ public class AreaCalculator {
             String saveChoice = scanner.next().trim().toLowerCase();
 
             if (saveChoice.equals("y")) {
-                savedAreas.add(area);
+                savedAreas.add(area); //area is added to the array
                 System.out.println("Area saved for future use. \n ");
                 break;
             } else if (saveChoice.equals("n")) {

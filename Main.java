@@ -35,13 +35,13 @@ public class Main {
                     AreaCalculator.displayAreaCalculator();  // call the AreaCalculator's display method
                     break;
                 case 3:
-                    currencyConverter.runConverter();  // run the currency converter
+                    currencyConverter.runConverter();  // run the Currency converter
                     break;
                 case 4:
-                    lengthConverter.runConverter();  // run the length converter
+                    lengthConverter.runConverter();  // run the Length converter
                     break;
                 case 5:
-                    temperatureConverter.runConverter();  // run the temperature converter
+                    temperatureConverter.runConverter();  // run the Temperature converter
                     break;
                 case 6:
                     TaxCalculator.displayTaxCalculator();  // call the TaxCalculator's display method
@@ -53,7 +53,7 @@ public class Main {
                     // exit the program and display a message
                     System.out.println("Thank you for using our Tradesmen Calculator. We hope to see you again soon. \nExiting...");
                     input.close();  // close the scanner at the end
-                    return; // exit the program
+                    return;
                 default:
                     System.out.println("Invalid option, please enter a valid option.");  // handle invalid input
             }

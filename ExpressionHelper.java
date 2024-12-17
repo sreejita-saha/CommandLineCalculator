@@ -1,91 +1,64 @@
 import java.util.Stack;
 
-public class ExpressionHelper {
+// helper class for working with expressions
+class ExpressionHelper {
 
-    // Method to parse a number from the expression, handling negative signs
-    public static String parseNumber(String expression, int i) {
-        StringBuilder number = new StringBuilder();
-
-        // handle negative sign at the beginning of a number
-        if (expression.charAt(i) == '-') {
-            number.append('-');  // append the negative sign
-            i++;  // move to the next character
-        }
-
-        // loop to collect digits and decimal point to form a valid number
-        while (i < expression.length() && (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.')) {
-            number.append(expression.charAt(i));  // append current character to number
-            i++;  // move to the next character
-        }
-
-        return number.toString();  // return the parsed number as a string
+    // cleans up the expression by removing spaces, handling multiplication without the * symbol, and simplifying signs
+    public static String preprocessExpression(String expression) {
+        expression = expression.trim().replaceAll("\\s", "");  // remove spaces
+        expression = handleImplicitMultiplication(expression);  // fix multiplication without * (like "2(3)" to "2*(3)")
+        expression = simplifyConsecutiveSigns(expression);  // fix consecutive signs (like "--" to "+")
+        return expression;
     }
 
+    // changes consecutive negative/positive signs
+    public static String simplifyConsecutiveSigns(String expression) {
+        expression = expression.replace("--", "+");  // "--" becomes "+"
+        expression = expression.replace("++", "+");  // "++" becomes "+"
+        return expression;
+    }
 
-    // method to handle implicit multiplication (like between a number and parentheses)
+    // checks if the expression is valid and has matching parentheses
+    public static void validateExpression(String expression) throws CalculatorException {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < expression.length(); i++) {
+            char ch = expression.charAt(i);
+            if (!Character.isDigit(ch) && !OperatorHelper.isOperator(ch) && ch != '(' && ch != ')' && ch != '.' && ch != 'e') {
+                throw new CalculatorException("Invalid character '" + ch + "' at index " + i);  // error for invalid character
+            }
+            if (ch == '(') stack.push(ch);  // open parentheses
+            else if (ch == ')') {  // close parentheses
+                if (stack.isEmpty()) throw new CalculatorException("Mismatched parentheses at index " + i);  // error for missing opening parentheses
+                stack.pop();  // remove matching opening parentheses
+            }
+        }
+        if (!stack.isEmpty()) throw new CalculatorException("Mismatched parentheses: missing closing parenthesis.");  // error for missing closing parentheses
+    }
+
+    // adds multiplication when a number is followed by a parentheses, like "2(3)" becomes "2*(3)"
     public static String handleImplicitMultiplication(String expression) {
         StringBuilder fixedExpression = new StringBuilder();
-
-        // iterate through the expression
         for (int i = 0; i < expression.length(); i++) {
             char current = expression.charAt(i);
-
-            // check if there's an implicit multiplication
             if (i > 0 && (Character.isDigit(expression.charAt(i - 1)) || expression.charAt(i - 1) == ')') && current == '(') {
-                fixedExpression.append('*');  // add multiplication symbol
+                fixedExpression.append('*');  // add * for multiplication
             }
-            fixedExpression.append(current);  // append the current character
+            fixedExpression.append(current);  // add the current character
         }
-        return fixedExpression.toString();  // return the modified expression
+        return fixedExpression.toString();  // return the fixed expression
     }
 
-    // method to handle consecutive negative signs (like '--' becomes '+')
-    public static String handleConsecutiveNegativeSigns(String expression) {
-        return expression.replace("--", "+");  // replace '--' with '+'
-    }
-
-    // method to handle consecutive positive signs (like '++' becomes '+')
-    public static String handleConsecutivePositiveSigns(String expression) {
-        return expression.replace("++", "+");  // replace '++' with '+'
-    }
-
-
-    // method to perform the operation between two operands
-    public static void performOperation(Stack<Double> operandStack, Stack<Character> operatorStack) throws CalculatorException {
-        if (operandStack.size() < 2) {
-            throw new CalculatorException("Invalid expression.");  // throw exception if not enough operands
+    // reads a number from the expression, handling negative and decimal numbers
+    public static String parseNumber(String expression, int index) {
+        StringBuilder number = new StringBuilder();
+        if (expression.charAt(index) == '-') {
+            number.append('-');  // if it's a negative number, add minus sign
+            index++;
         }
-
-        double b = operandStack.pop();  // pop second operand
-        double a = operandStack.pop();  // pop first operand
-        char operator = operatorStack.pop();  // pop the operator
-
-        double result;
-
-        // perform the operation based on the operator
-        switch (operator) {
-            case '+':
-                result = a + b;  // addition
-                break;
-            case '-':
-                result = a - b;  // subtraction
-                break;
-            case '*':
-                result = a * b;  // multiplication
-                break;
-            case '/':
-                if (b == 0) {
-                    throw new CalculatorException("Division by zero.");  // throw exception for division by zero
-                }
-                result = a / b;  // division
-                break;
-            case '^':
-                result = Math.pow(a, b);  // exponentiation
-                break;
-            default:
-                throw new CalculatorException("Unknown operator.");  // throw exception for unknown operator
+        while (index < expression.length() && (Character.isDigit(expression.charAt(index)) || expression.charAt(index) == '.')) {
+            number.append(expression.charAt(index));  // add digits or decimal point
+            index++;
         }
-
-        operandStack.push(result);  // push the result back onto the operand stack
+        return number.toString();  // return the number as a string
     }
 }
