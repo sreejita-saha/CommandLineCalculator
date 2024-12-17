@@ -59,8 +59,8 @@ public class MatrixCalculator {
             System.out.println();
 
             System.out.println("Matrix 2: ");
-            for (int r = 0; r < rows1; r++ ) {
-                for(int c = 0; c < columns1; c++) { 
+            for (int r = 0; r < rows2; r++ ) {
+                for(int c = 0; c < columns2; c++) { 
                     System.out.print(matrix2[r][c] + " ");
                 }
                 System.out.println();
