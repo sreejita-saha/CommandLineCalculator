@@ -89,7 +89,7 @@ public class MatrixCalculator {
                         System.out.println("Result of adding matrix1 and matrix2: ");
                         matrixOperations.displayMatrixResult(result); // calls displayMatrixResult from matrixOperatiosn to display result matrix
                     } catch (MatrixCalculatorException e ) {
-                        System.out.println(e.getMessage());
+                        System.out.println("Error: " + e.getMessage());
                     }
                     break;
                 case 2:
@@ -98,7 +98,7 @@ public class MatrixCalculator {
                         System.out.println("Result of subtracting matrix2 from matrix1 is: ");
                         matrixOperations.displayMatrixResult(result); // displayMatrixResult displays result
                     } catch (MatrixCalculatorException e) {
-                        System.out.println(e.getMessage());
+                        System.out.println("Error: " + e.getMessage());
                     }
                     break;
                 case 3:
@@ -107,7 +107,7 @@ public class MatrixCalculator {
                         System.out.println("Result of multiplying matrix1 and matrix2 together is: ");
                         matrixOperations.displayMatrixResult(result); // displayMatrixResult displays result
                     } catch (MatrixCalculatorException e) {
-                        System.out.println(e.getMessage());
+                        System.out.println("Error: " + e.getMessage());
                     }
                     break;
                 case 4:
