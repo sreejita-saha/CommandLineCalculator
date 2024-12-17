@@ -1,13 +1,5 @@
 public class MatrixOperations {
-    public void displayMatrixResult(double[][] matrix) {
-        for (int r = 0; r < matrix.length; r++ ) {          // outer loop iterates through the rows of the matrix as long as r < the number of rows in the matrix and when r increments it moves to the next row
-            for (int c = 0 ; c < matrix[r].length; c++ ) {     // inner loop iterates through
-                System.out.print(matrix[r][c] + " ");           // it is matrix[r] in the inner loop so it can be any type array size with differing rows and columns
-            }
-            System.out.println(); // prints a new line after each row
-        }
-    } 
-
+    
     public double[][] matrixAddition(double[][] matrix1, double[][] matrix2) throws MatrixCalculatorException {
         int rows1 = matrix1.length; // gets no. of rows in m1
         int columns1 = matrix1[0].length; // gets no. of columns in m1 from row1
@@ -79,4 +71,14 @@ public class MatrixOperations {
         }
         return matrix1Transpose;
     }
+    
+    public void displayMatrixResult(double[][] matrix) {
+        for (int r = 0; r < matrix.length; r++ ) {          // outer loop iterates through the rows of the matrix as long as r < the number of rows in the matrix and when r increments it moves to the next row
+            for (int c = 0 ; c < matrix[r].length; c++ ) {     // inner loop iterates through
+                System.out.print(matrix[r][c] + " ");           // it is matrix[r] in the inner loop so it can be any type array size with differing rows and columns
+            }
+            System.out.println(); // prints a new line after each row
+        }
+    } 
+
 }
