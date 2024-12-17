@@ -4,7 +4,6 @@ EPIC group assignment: Command Line Calculator for Block 2 .
 By Harry Kikkers and Sreejita Saha
 
 Features:
-
     1. Calculator  
     2. Matrix Calculator
     3. Area Calculator 
