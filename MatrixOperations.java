@@ -6,7 +6,7 @@ public class MatrixOperations {
             }
             System.out.println(); // prints a new line after each row
         }
-    }
+    } 
 
     public double[][] matrixAddition(double[][] matrix1, double[][] matrix2) throws Exception {
         int rows1 = matrix1.length; // gets no. of rows in m1
