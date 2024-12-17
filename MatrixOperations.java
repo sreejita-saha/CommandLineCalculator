@@ -8,14 +8,14 @@ public class MatrixOperations {
         }
     } 
 
-    public double[][] matrixAddition(double[][] matrix1, double[][] matrix2) throws Exception {
+    public double[][] matrixAddition(double[][] matrix1, double[][] matrix2) throws MatrixCalculatorException {
         int rows1 = matrix1.length; // gets no. of rows in m1
         int columns1 = matrix1[0].length; // gets no. of columns in m1 from row1
         int rows2 = matrix2.length;
         int columns2 = matrix2[0].length;
         // checks if the two matrices have same rows and columns
         if(rows1 != rows2 || columns1 != columns2) {
-            throw new Exception("Matrices must have the same dimensions for addition to be done");
+            throw new MatrixCalculatorException("Matrices must have the same dimensions for addition to be done");
         }
         double[][] matrixAddition = new double[rows1][columns1]; // result matrix for the addition
         for (int r = 0; r < rows1; r++) {
@@ -26,14 +26,14 @@ public class MatrixOperations {
         return matrixAddition;
     }
 
-    public double[][] matrixSubtraction(double[][] matrix1, double[][] matrix2) throws Exception {
+    public double[][] matrixSubtraction(double[][] matrix1, double[][] matrix2) throws MatrixCalculatorException {
         int rows1 = matrix1.length; // gets no. of rows in m1
         int columns1 = matrix1[0].length; // gets no. of columns in m1 from row1
         int rows2 = matrix2.length;
         int columns2 = matrix2[0].length;
         // checks if the two matrices have the same rows and columns
         if(rows1 != rows2 || columns1 != columns2) {
-            throw new Exception("Matrices must have the same dimensions for addition to be done");
+            throw new MatrixCalculatorException("Matrices must have the same dimensions for addition to be done");
         }
         double[][] matrixAddition = new double[rows1][columns1];
         for (int r = 0; r < rows1; r++) {
@@ -44,16 +44,15 @@ public class MatrixOperations {
         return matrixAddition;
     }
 
-    public double[][] matrixMultiplication(double[][] matrix1, double[][] matrix2) throws Exception {
+    public double[][] matrixMultiplication(double[][] matrix1, double[][] matrix2) throws MatrixCalculatorException {
         int rows1 = matrix1.length; // gets no. of rows in m1
         int columns1 = matrix1[0].length; // gets no. of columns in m1 from row1
         int rows2 = matrix2.length;
         int columns2 = matrix2[0].length;
         // checks if number of columns in m1 and rows in m2 are equal
         if (columns1 != rows2) {
-            System.out.println("Can't multiply matrix1 and matrix2 as the number of columns in matrix 1 " +
+            throw new MatrixCalculatorException("Can't multiply matrix1 and matrix2 as the number of columns in matrix 1 " +
                     "do not equal the number of rows in matrix2");
-            return null;
         }
         double[][] multipliedMatrixResult = new double[rows1][columns2]; // result matrix for the multiplication
 
