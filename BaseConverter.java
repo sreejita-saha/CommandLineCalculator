@@ -20,7 +20,7 @@ public abstract class BaseConverter {
             int choice = input.nextInt();
 
             if (choice == 0) {
-                System.out.println("Exiting converter...");
+                System.out.println("Exiting converter... \n ");
                 break;
             }
             performConversion(choice);

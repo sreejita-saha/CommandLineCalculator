@@ -50,9 +50,6 @@ public class LengthConverter extends BaseConverter {
                 lengthConversion = lengthConversions.centimetersToInches(length);
                 System.out.println(length + " cm is " + lengthConversion + " inches");
                 break;
-            case 0: // Exit
-                System.out.println("Exiting the program.");
-                break;
             default:
                 System.out.println("Invalid option selected.");
         }

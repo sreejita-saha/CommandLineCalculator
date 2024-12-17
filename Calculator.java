@@ -21,11 +21,11 @@ public class Calculator {
         ExpressionEvaluator evaluator = new ArithmeticExpressionEvaluator(); // creating an evaluator object using BasicExpressionEvaluator class
 
         while (true) { // loop for repeated user input
-            System.out.println("Enter a mathematical expression (or type 'exit' to quit):"); // asking user for input
+            System.out.println("Enter a mathematical expression (or type 'E' to quit):"); // asking user for input
             String input = scanner.nextLine(); // reading the user input as a string
 
             if (input.equalsIgnoreCase("E")) { // if user types E or e to exit
-                System.out.println("Exiting the Calculator. Goodbye!"); // display exit message
+                System.out.println("Exiting the Calculator. Goodbye! \n "); // display exit message
                 break; // exit the program
             }
 
