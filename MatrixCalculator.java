@@ -17,6 +17,9 @@ public class MatrixCalculator {
         int numberOfM1Elements = 0;
         int numberOfM2Elements = 0;
 
+        int transposeMatrix = 0;
+        double[][] matrixChosen = null;
+
         while (true) {
             System.out.println("Welcome to the Matrix Calculator.");
             System.out.println("Please enter matrix information first.");
@@ -111,8 +114,15 @@ public class MatrixCalculator {
                     }
                     break;
                 case 4:
-                    double[][] result = matrixOperations.matrixTranspose(matrix1); // calls matrixTranspose and transposes m1, stores in result
-                    System.out.println("Transpose of matrix1 is: ");
+                    System.out.println("Select a matrix to transpose (1 or 2): ");
+                    transposeMatrix = input.nextInt();
+                    if (transposeMatrix == 1 ){
+                        matrixChosen = matrix1;
+                    } else if (transposeMatrix == 2) {
+                        matrixChosen = matrix2;
+                    }
+                    double[][] result = matrixOperations.matrixTranspose(matrixChosen); // calls matrixTranspose and transposes m1, stores in result
+                    System.out.println("Transpose of matrix" + transposeMatrix + " is: ");
                     matrixOperations.displayMatrixResult(result); // displayMatrixResult displays result
                     break;
             }
