@@ -1,3 +1,5 @@
+///<summary> Tax Calculator that can compute your yearly tax according to the rules of the Irish system.</summary>
+
 import java.util.Scanner; // scanner for user input
 
 public class TaxCalculator {
@@ -6,6 +8,7 @@ public class TaxCalculator {
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the Tax Calculator.");
 
+        //loop for repeated user inputs
         while (true) {
             // get user input with validation for gross income, pension, PRSA, PHB, and tax credits
             double grossIncome = validation(input, "Please enter your gross income for this year: ");
@@ -29,25 +32,26 @@ public class TaxCalculator {
             }
         }
     }
-
+    //method to calculate tax
     public static double calculateTax(double grossInc, double pensionCon, double prsa, double phb, double taxCred) {
         // calculate taxable income after deductions
-        double taxableInc = grossInc - (pensionCon + phb + prsa);
+        double taxableIncome = grossInc - (pensionCon + phb + prsa);
 
-        if (taxableInc < 0) {
-            taxableInc = 0;
+        //ensure it is not negative
+        if (taxableIncome < 0) {
+            taxableIncome = 0;
         }
 
         // calculate income tax
         double tax = 0;
-        if (taxableInc < 20000) {
-            tax = taxableInc * 0.2;
+        if (taxableIncome < 20000) {
+            tax = taxableIncome * 0.2;
         } else {
-            tax = (20000 * 0.2) + (taxableInc - 20000) * 0.4;
+            tax = (20000 * 0.2) + (taxableIncome - 20000) * 0.4;
         }
 
         // calculate PRSI (Pay Related Social Insurance)
-        double prsi = taxableInc * 0.04;
+        double prsi = taxableIncome * 0.04;
 
         // calculate USC (Universal Social Charge)
         double usc = 0;
@@ -63,16 +67,17 @@ public class TaxCalculator {
             }
         }
 
-        // total tax after deducting tax credits
+        // total tax liability after deducting tax credits
         double totalTax = (tax + prsi + usc) - taxCred;
 
+        // ensure total tax is not negative
         if (totalTax < 0) {
             totalTax = 0;
         }
 
         return totalTax;
     }
-
+    // Method for validation
     private static double validation(Scanner input, String prompt) {
         double value = -1;
         // keep asking for input until valid value is entered
@@ -90,7 +95,7 @@ public class TaxCalculator {
         }
         return value;
     }
-
+    // Method for continue or exit prompt.
     private static boolean askContinue(Scanner input) {
         System.out.print("Do you want to perform another tax calculation? (Y/N): ");
         String continueChoice = input.next().trim().toLowerCase();

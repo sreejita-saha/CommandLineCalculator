@@ -1,3 +1,5 @@
+///<summary> Calculates Area and can store and sum calculations using Arrays.</summary>
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -78,7 +80,7 @@ public class AreaCalculator {
                         System.out.println("No areas saved yet.");
                     } else {
                         System.out.println("Saved areas:");
-                        for (int i = 0; i < savedAreas.size(); i++) {
+                        for (int i = 0; i < savedAreas.size(); i++) { //loop that iterartes through all the values
                             System.out.printf("%d. %.2f square meters%n", i + 1, savedAreas.get(i));
                         }
                     }
@@ -103,7 +105,7 @@ public class AreaCalculator {
             }
         }
     }
-    //method to ask and save area that is used after each minor calculation
+    //method to ask and save area that is prompted and used after each minor calculation
     private static void saveArea(double area) {
         System.out.println("The calculated area is: " + area + " square meters.");
 

@@ -1,3 +1,5 @@
+///<summary> This class is what evaluates the expression and performs the calculation</summary>
+
 import java.util.Stack;
 
 // class that evaluates mathematical expressions

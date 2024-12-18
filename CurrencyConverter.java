@@ -6,6 +6,7 @@ public class CurrencyConverter extends BaseConverter {
     private final CurrencyConversions currencyConversions = new CurrencyConversions(); // create CurrencyConversions object to perform the conversions
     private final Scanner input = new Scanner(System.in);
 
+    //Menu
     @Override
     public void displayMenu() {
         System.out.println("Welcome to the Currency Converter.");

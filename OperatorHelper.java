@@ -1,3 +1,5 @@
+///<summary> This class takes care of precedence and operators and helps ArithmeticExpressionEvaluator</summary>
+
 public class OperatorHelper {
     // method to check if the character is an operator
     public static boolean isOperator(char c) {

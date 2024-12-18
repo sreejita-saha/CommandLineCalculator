@@ -1,3 +1,5 @@
+/// <summary> Abstract class from which the converters inherit from.</summary>
+
 import java.util.Scanner;
 
 public abstract class BaseConverter {

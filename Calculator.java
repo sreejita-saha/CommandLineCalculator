@@ -15,18 +15,19 @@ import java.util.Scanner; // scanner to handle user input
 
 public class Calculator {
     public static void displayCalculator() {
-        Scanner scanner = new Scanner(System.in); // creating scanner object to read user input
-        System.out.println("Welcome to the Calculator!"); // displaying welcome message
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Calculator!");
 
         ExpressionEvaluator evaluator = new ArithmeticExpressionEvaluator(); // creating an evaluator object using BasicExpressionEvaluator class
 
         while (true) { // loop for repeated user input
-            System.out.println("Enter a mathematical expression (or type 'E' to quit):"); // asking user for input
-            String input = scanner.nextLine(); // reading the user input as a string
+            System.out.println("Enter a mathematical expression (or type 'E' to quit):");
+            String input = scanner.nextLine();
 
-            if (input.equalsIgnoreCase("E")) { // if user types E or e to exit
-                System.out.println("Exiting the Calculator. Goodbye! \n "); // display exit message
-                break; // exit the program
+            //to exit
+            if (input.equalsIgnoreCase("E")) {
+                System.out.println("Exiting the Calculator. Goodbye! \n ");
+                break;
             }
 
             try {

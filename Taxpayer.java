@@ -1,11 +1,14 @@
 /// <summary>Taxpayer Class stores and manages data for Tax Calculator for encapsulation </summary>
+
 public class Taxpayer {
+    //Declaring private fields
     private double grossIncome;
     private double pensionContribution;
     private double prsa;
     private double phb;
     private double taxCredits;
 
+    //Constructor to initialise
     public Taxpayer(double grossIncome, double pensionContribution, double prsa, double phb, double taxCredits) {
         this.grossIncome = grossIncome;
         this.pensionContribution = pensionContribution;

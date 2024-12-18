@@ -2,7 +2,7 @@ import java.util.Scanner; //scanner for user input
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in); // create a scanner to read user input
+        Scanner input = new Scanner(System.in);
 
         //Creating instances of the converters
         LengthConverter lengthConverter = new LengthConverter();  // instantiate LengthConverter
@@ -17,7 +17,7 @@ public class Main {
                     "5. Temperature Converter      6. Tax Calculator \n" +
                     "7. Matrix Calculator          0. Exit");
 
-            int option = input.nextInt();  // read the user's choice
+            int option = input.nextInt();
             input.nextLine(); // consume the newline character after nextInt()
 
             // check if the input is valid
@@ -50,7 +50,6 @@ public class Main {
                     MatrixCalculator.displayMatrixCalculator();  // call the MatrixCalculator's display method
                     break;
                 case 0:
-                    // exit the program and display a message
                     System.out.println("Thank you for using our Tradesmen Calculator. We hope to see you again soon. \nExiting...");
                     input.close();  // close the scanner at the end
                     return;

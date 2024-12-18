@@ -1,3 +1,5 @@
+///<summary> Similiar to Operator Helper, it contains methods that help process the expression and parse it. </summary>
+
 import java.util.Stack;
 
 // helper class for working with expressions

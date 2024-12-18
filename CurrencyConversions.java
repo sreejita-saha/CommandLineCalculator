@@ -1,4 +1,4 @@
-/// <summary>Methods containing rates for currency conversion </summary>
+/// <summary> Methods containing rates for currency conversion </summary>
 
 public class CurrencyConversions {
 
